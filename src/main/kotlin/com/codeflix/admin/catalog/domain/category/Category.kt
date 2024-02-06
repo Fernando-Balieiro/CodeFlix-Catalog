@@ -7,7 +7,7 @@ import java.time.Instant
 data class Category private constructor(
     private val id: CategoryId,
     private var name: String,
-    private var description: String,
+    private var description: String?,
     private var isActive: Boolean,
     private val createdAt: Instant,
     private var updatedAt: Instant,
@@ -20,8 +20,8 @@ data class Category private constructor(
             name = value
         }
 
-    var categoryDescription: String
-        get() = this.description
+    var categoryDescription: String?
+        get() = description
         set(value) {
             description = value
         }
@@ -52,7 +52,7 @@ data class Category private constructor(
 
         fun new(id: CategoryId,
                 name: String,
-                description: String,
+                description: String?,
                 isActive: Boolean,
                 createdAt: Instant,
                 updatedAt: Instant,
@@ -70,6 +70,25 @@ data class Category private constructor(
                 aCategory.createdAt,
                 aCategory.updatedAt,
                 aCategory.deletedAt,
+            )
+        }
+
+        fun with(from: CategoryId,
+                 categoryJpaName: String,
+                 categoryJpaDescription: String?,
+                 categoryJpaIsActive: Boolean,
+                 categoryJpaCreatedAt: Instant,
+                 categoryJpaUpdatedAt: Instant,
+                 categoryJpaDeletedAt: Instant?
+        ): Category {
+            return Category(
+                from,
+                categoryJpaName,
+                categoryJpaDescription,
+                categoryJpaIsActive,
+                categoryJpaCreatedAt,
+                categoryJpaUpdatedAt,
+                categoryJpaDeletedAt
             )
         }
     }

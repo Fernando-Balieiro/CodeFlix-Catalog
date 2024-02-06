@@ -20,5 +20,6 @@ class DomainException private constructor(
             return DomainException("", errorList)
         }
 
+
     }
 }

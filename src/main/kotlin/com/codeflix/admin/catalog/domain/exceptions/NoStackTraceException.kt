@@ -8,7 +8,7 @@ open class NoStackTraceException(
 ) : RuntimeException(message, cause, true, false) {
     companion object {
         fun fromError(error: Error) : DomainException {
-            return DomainException(error.message, listOf(error))
+            return DomainException.new(error)
         }
     }
 }

@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+    implementation("org.hibernate:hibernate-core:6.4.3.Final")
     implementation(platform("io.arrow-kt:arrow-stack:1.2.0-RC"))
     implementation("io.arrow-kt:arrow-core")
     implementation("org.springframework.boot:spring-boot-starter-web")

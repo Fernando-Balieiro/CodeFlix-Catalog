@@ -15,7 +15,7 @@ class CategoryValidator(
     }
 
     private fun checkNameConstraint() {
-        val name = category.name
+        val name = category.categoryName
         if (name.isBlank()) {
             validationHandler().append(Error("'Name' should not be empty"))
         }

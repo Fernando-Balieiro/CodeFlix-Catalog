@@ -17,7 +17,6 @@ class DefaultUpdateCategoryUseCase(
         val anId = CategoryId.from(input.id)
         val name = input.name
         val description = input.description
-        val isActive = input.isActive
 
         val notification = Notification.new()
         val aCategory = this.categoryGateway.findById(anId)
@@ -39,7 +38,6 @@ class DefaultUpdateCategoryUseCase(
 
     private fun update(aCategory: Category): Either<Notification, UpdateCategoryOutput> {
         return try {
-            val output = categoryGateway.update(aCategory)
             Either.Right(UpdateCategoryOutput.from(aCategory))
         } catch (e: Exception) {
             Either.Left(Notification.new())
